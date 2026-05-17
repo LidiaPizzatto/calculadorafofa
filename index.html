@@ -2,17 +2,17 @@
 <html>
     <head>    
         <title>Calculadora</title>
-
+       
         <audio id="clickSound">
-            <source src="click button.mp3" type="audio/mpeg">
+            <source src="sons/click button.mp3" type="audio/mpeg">
         </audio>
 
         <audio id="resultSound">
-            <source src="result.mp3" type="audio/mpeg">
+            <source src="sons/result.mp3" type="audio/mpeg">
         </audio>
 
         <audio id="clearSound">
-            <source src="clear.mp3" type="audio/mpeg">
+            <source src="sons/clear.mp3" type="audio/mpeg">
         </audio>
 
         <script>
@@ -28,7 +28,8 @@
 
                 let resultado = document.getElementById("resultado");
                 let resultSound = document.getElementById("resultSound");
-                resultado.value = eval(resultado.value);
+                let conta = eval(resultado.value);
+                resultado.value = parseFloat(conta.toFixed(2));
                 resultSound.currentTime = 0;
                 resultSound.play();
             }
@@ -39,6 +40,14 @@
                 resultado.value = "";
                 clearSound.currentTime = 0;
                 clearSound.play();
+            }
+
+            function raizQuadrada() {
+
+                let resultado = document.getElementById("resultado");
+                resultado.value = Math.sqrt(resultado.value);
+                clickSound.currentTime = 0;
+                clickSound.play();
             }
 
         </script>
@@ -63,12 +72,18 @@
             <button class="bn" type = "button" onclick = "calculate(8)">8</button>
             <button class="bn" type = "button" onclick = "calculate(9)">9</button>
             <button class="bn" type = "button" onclick = "calculate('*')">x</button> <br>
-            <button class="bn" type = "button" onclick = "calculate(0)">0</button>           
-           <button class="bn" type = "button" onclick = "calculate('/')">/</button>
+            <button class="bn" type = "button" onclick = "calculate(0)">0</button>
+            <button class="bn" type = "button" onclick = "calculate('.')">.</button>            
+            <button class="bn" type = "button" onclick = "calculate('/')">/</button> 
+            <button class="bn" type = "button" onclick = "calculate('**')">^</button>
+
+            <button class="bn"type="button" onclick="raizQuadrada()">√</button><br><br>             
            
-           <button class="res" type="button"onclick="limpar()"> Clear</button>
+            <button class="resultBtn"type="button" onclick="calcularResultado()"> Result</button>
+
+            <button class="resultBtn" type="button"onclick="limpar()"> Clear</button> 
                       
-           <button class="resultBtn"type="button" onclick="calcularResultado()"> Result</button>
+           
            
 
            
@@ -98,22 +113,17 @@
         fieldset {
             width: 320px;
             min-height: 500px;
-
             padding: 25px;
-
             border: 3px solid #5c5c5c;
-
             border-radius: 20px;
-
             background: linear-gradient(to bottom, #8a8a8a, #5f5f5f);
-
             box-shadow:
                 0 8px 20px rgba(0,0,0,0.4),
                 inset 0 2px 3px rgba(255,255,255,0.3);
         }
 
         input[type="text"] {
-            width: 90%;
+            width: 90%;            
             height: 50px;
             padding: 10px;
             margin-bottom: 15px;
@@ -189,3 +199,4 @@
 
         </style>
 </html>
+
