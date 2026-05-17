@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head>    
+        <title>Calculadora</title>
+
+        <audio id="clickSound">
+            <source src="sons/click button.mp3" type="audio/mpeg">
+        </audio>
+
+        <audio id="resultSound">
+            <source src="sons/result.mp3" type="audio/mpeg">
+        </audio>
+
+        <audio id="clearSound">
+            <source src="sons/clear.mp3" type="audio/mpeg">
+        </audio>
+
+        <script>
+            function calculate(numero) {
+                let resultado = document.getElementById("resultado");
+                let clickSound = document.getElementById("clickSound");
+                resultado.value += numero;
+                clickSound.currentTime = 0;
+                clickSound.play();
+            }
+
+            function calcularResultado() {
+
+                let resultado = document.getElementById("resultado");
+                let resultSound = document.getElementById("resultSound");
+                resultado.value = eval(resultado.value);
+                resultSound.currentTime = 0;
+                resultSound.play();
+            }
+
+            function limpar() {
+                let resultado = document.getElementById("resultado");
+                let clearSound = document.getElementById("clearSound");
+                resultado.value = "";
+                clearSound.currentTime = 0;
+                clearSound.play();
+            }
+
+        </script>
+    </head>
+
+    <body>
+        <form action = "">
+            
+            <fieldset>          
+            
+            <input type="text" id="resultado"> <br><br>
+           
+            <button class="bn" type = "button" onclick = "calculate(1)">1</button>
+            <button class="bn" type = "button" onclick = "calculate(2)">2</button>
+            <button class="bn" type = "button" onclick = "calculate(3)">3</button>
+            <button class="bn" type = "button" onclick = "calculate('+')">+</button> <br>
+            <button class="bn" type = "button" onclick = "calculate(4)">4</button>
+            <button class="bn" type = "button" onclick = "calculate(5)">5</button>
+            <button class="bn" type = "button" onclick = "calculate(6)">6</button> 
+            <button class="bn" type = "button" onclick = "calculate('-')">-</button> <br>
+            <button class="bn" type = "button" onclick = "calculate(7)">7</button>
+            <button class="bn" type = "button" onclick = "calculate(8)">8</button>
+            <button class="bn" type = "button" onclick = "calculate(9)">9</button>
+            <button class="bn" type = "button" onclick = "calculate('*')">x</button> <br>
+            <button class="bn" type = "button" onclick = "calculate(0)">0</button>           
+           <button class="bn" type = "button" onclick = "calculate('/')">/</button>
+           
+           <button class="res" type="button"onclick="limpar()"> Clear</button>
+                      
+           <button class="resultBtn"type="button" onclick="calcularResultado()"> Result</button>
+           
+
+           
+           
+                </fieldset>           
+        
+
+        </form>
+    </body>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+        }       
+
+        fieldset {
+            width: 320px;
+            min-height: 500px;
+
+            padding: 25px;
+
+            border: 3px solid #5c5c5c;
+
+            border-radius: 20px;
+
+            background: linear-gradient(to bottom, #8a8a8a, #5f5f5f);
+
+            box-shadow:
+                0 8px 20px rgba(0,0,0,0.4),
+                inset 0 2px 3px rgba(255,255,255,0.3);
+        }
+
+        input[type="text"] {
+            width: 90%;
+            height: 50px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: #1e1e1e;
+            color: #00ff66;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: right;
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.8);
+        }
+        
+
+        .bn {
+            width: 21%;
+            padding: 8px;
+            margin: 2px;
+            border: none;
+            border-radius: 8px;                       
+            color: white;
+            font-size: 14px;
+            background: linear-gradient(to bottom, #4da3ff, #007BFF); 
+            font-weight: bold;
+            box-shadow: 0 5px #0056b3;
+            cursor: pointer;
+            transition: 0.1s;
+            
+        }
+
+        .res {
+            width: 46%;
+            padding: 8px;
+            margin: 2px;
+            border: none;
+            border-radius: 8px;            
+            color: white;
+            font-size: 14px;
+            background: linear-gradient(to bottom, #4da3ff, #007BFF); 
+            font-weight: bold;
+            box-shadow: 0 5px #0056b3;
+            cursor: pointer;
+            transition: 0.1s;
+            
+        }
+
+        .resultBtn {
+            width: 97%;
+            display: block;
+            margin: 10px auto;
+            background: linear-gradient(to bottom, #4da3ff, #007BFF); 
+            font-weight: bold;
+            box-shadow: 0 5px #0056b3;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        button {
+            width: 95%;
+            padding: 10px;
+            margin: 10px;            
+            border: none;
+            border-radius: 50px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+
+        </style>
+</html>
